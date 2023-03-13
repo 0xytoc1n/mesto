@@ -107,25 +107,25 @@
             class="popup__cls-btn"
             type="button"
             aria-label="Закрыть окно"></button>
-          <form class="popup__form" method="post">
+          <form class="popup__form" method="post" name="form1">
             <h2 class="popup__title">Редактировать профиль</h2>
             <fieldset class="popup__fieldset">
               <input
                 type="text"
                 class="popup__input popup__input_change_nickname"
-                maxlength="20"
                 placeholder="Никнейм"
                 value=""
+                name="name"
                 required>
               <input
                 type="text"
                 class="popup__input popup__input_change_activity"
-                maxlength="45"
                 placeholder="Деятельность"
                 value=""
+                name="activity"
                 required>
             </fieldset>
-            <button class="popup__sbt-btn" type="button" aria-label="Сохранить">
+            <button class="popup__sbt-btn" type="submit" aria-label="Сохранить">
               Сохранить
             </button>
           </form>

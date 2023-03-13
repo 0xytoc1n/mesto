@@ -14,4 +14,4 @@
 
 **Страница проекта**
 
-[Ссылка](https://0xytoc1n.github.io/russian-travel/).
+[Ссылка](https://0xytoc1n.github.io/mesto/).
