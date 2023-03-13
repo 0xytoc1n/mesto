@@ -1,0 +1,25 @@
+.popup__contanier {
+    max-width: 470px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: repeat(2, min-content);
+    grid-gap: 8px;
+    grid-template-areas:
+        "title cls-btn"
+        "popup__form subtitle";
+    margin: 0 auto;
+    box-sizing: border-box;
+    font-family: 'Inter', Arial, sans-serif;
+}
+
+@media screen and (max-width: 767px) {
+    .popup__contanier {
+        max-width: calc(282px + (470 - 282) * ((100vw - 320px) / (1280 - 320)));
+        grid-template-columns: 1fr;
+        grid-template-areas:
+        "cls-btn"
+        "popup__form";
+        grid-gap: 16px 0;
+        justify-items: end;
+    }
+}

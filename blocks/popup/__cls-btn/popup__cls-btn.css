@@ -1,0 +1,23 @@
+.popup__cls-btn {
+    grid-area: cls-btn;
+    width: 32px;
+    height: 32px;
+    background-image: url(../../../images/CloseIcon.png);
+    background-color: #000000;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 0;
+    padding: 0;
+}
+
+.popup__cls-btn:hover {
+    opacity: 0.6;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 767px) {
+    .popup__cls-btn {
+        width: 20px;
+        height: 20px;
+    }
+}

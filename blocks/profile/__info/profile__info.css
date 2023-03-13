@@ -1,0 +1,22 @@
+.profile__info {
+    max-width: 336px;
+    padding-left: 30px;
+    display: grid;
+    align-items: center;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: repeat(2, min-content);
+    justify-content: start;
+    grid-gap: 16px 18px;
+    grid-template-areas:
+        "title edit-btn"
+        "subtitle subtitle";
+}
+
+@media screen and (max-width: 1279px) {
+    .profile__info {
+        max-width: calc(282px + (336 - 282) * ((100vw - 320px) / (1280 - 320)));
+        padding: 26px 0 36px;
+        grid-gap: 14px 10px;
+        text-align: center;
+    }
+}

@@ -1,0 +1,26 @@
+.popup__sbt-btn {
+    width: 358px;
+    height: 50px;
+    margin: 0 auto;
+    padding: 0;
+    background-color: #000000;
+    color: #FFFFFF;
+    text-align: center;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    border-radius: 2px;
+}
+
+.popup__sbt-btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    cursor: pointer;
+}
+
+@media screen and (max-width: 767px) {
+    .popup__sbt-btn {
+        width: 238px;
+        height: 46px;
+    }
+}
