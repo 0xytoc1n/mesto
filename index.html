@@ -9,7 +9,7 @@
   <body class="page">
     <div class="page__contanier">
       <header class="header">
-        <img src="./images/logo.png" alt="Лого" class="header__logo">
+        <img src="./images/logo.svg" alt="Лого" class="header__logo">
       </header>
 
       <main class="content">
@@ -21,11 +21,11 @@
               class="profile__avatar">
             <div class="profile__info">
               <h1 class="profile__title">Жак-Ив Кусто</h1>
-              <button class="profile__edit-btn"></button>
+              <button class="profile__edit-btn" type="button"></button>
               <p class="profile__subtitle">Исследователь океана</p>
             </div>
           </div>
-          <button class="profile__add-btn"></button>
+          <button class="profile__add-btn" type="button"></button>
         </section>
 
         <section class="elements" aria-label="Фотокарточки">
@@ -34,9 +34,9 @@
               src="./images/adventure.jpg"
               alt="Трекинг."
               class="element__image">
-            <div class="description">
+            <div class="element__description">
               <h2 class="element__title">Экспедиция</h2>
-              <button class="element__like"></button>
+              <button class="element__like" type="button"></button>
             </div>
           </article>
 
@@ -45,9 +45,9 @@
               src="./images/dolphins.png"
               alt="Дульфины."
               class="element__image">
-            <div class="description">
+            <div class="element__description">
               <h2 class="element__title">Океан</h2>
-              <button class="element__like"></button>
+              <button class="element__like" type="button"></button>
             </div>
           </article>
 
@@ -56,9 +56,9 @@
               src="./images/explorercenter.png"
               alt="Холм."
               class="element__image">
-            <div class="description">
+            <div class="element__description">
               <h2 class="element__title">Исследовательский центр</h2>
-              <button class="element__like"></button>
+              <button class="element__like" type="button"></button>
             </div>
           </article>
 
@@ -67,9 +67,9 @@
               src="./images/kloun.png"
               alt="Рыба-клоун."
               class="element__image">
-            <div class="description">
+            <div class="element__description">
               <h2 class="element__title">Рифы</h2>
-              <button class="element__like"></button>
+              <button class="element__like" type="button"></button>
             </div>
           </article>
 
@@ -78,9 +78,9 @@
               src="./images/jacques-cousteau-submarines.jpg"
               alt="Субмарина."
               class="element__image">
-            <div class="description">
+            <div class="element__description">
               <h2 class="element__title">Субмарина</h2>
-              <button class="element__like"></button>
+              <button class="element__like" type="button"></button>
             </div>
           </article>
 
@@ -89,9 +89,9 @@
               src="./images/medusy.jpg"
               alt="Трекинг."
               class="element__image">
-            <div class="description">
+            <div class="element__description">
               <h2 class="element__title">Медузы</h2>
-              <button class="element__like"></button>
+              <button class="element__like" type="button"></button>
             </div>
           </article>
         </section>
@@ -107,8 +107,9 @@
             class="popup__cls-btn"
             type="button"
             aria-label="Закрыть окно"></button>
-          <form class="popup__form" method="post" name="form1">
             <h2 class="popup__title">Редактировать профиль</h2>
+          <form class="popup__form" method="post" name="form1">
+            
             <fieldset class="popup__fieldset">
               <input
                 type="text"
@@ -133,6 +134,6 @@
       </div>
     </div>
 
-    <script src="./scripts/script.js"></script>
+    <script src="./scripts/index.js"></script>
   </body>
 </html>
