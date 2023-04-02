@@ -1,0 +1,8 @@
+.elements__list {
+    width: 282px;
+    height: 361px;
+    object-fit: cover;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    position: relative;
+}

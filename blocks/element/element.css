@@ -1,7 +1,3 @@
-.element{
-    max-width: 282px;
-    max-height: 361px;
-    object-fit: cover;
-    background-color: #FFFFFF;
-    border-radius: 10px;
+.element {
+    height: 100%;
 }

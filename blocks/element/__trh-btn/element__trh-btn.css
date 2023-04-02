@@ -1,0 +1,18 @@
+.element__trh-btn {
+    position: absolute;
+    min-width: 18px;
+    min-height: 19px;
+    top: 20px;
+    right: 20px;
+    background-image: url(../../../images/TRASH.svg);
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: 0;
+    border-radius: 0;
+    text-align: center;
+}
+
+.element__trh-btn:hover {
+    opacity: 0.6;
+    cursor: pointer;
+}
