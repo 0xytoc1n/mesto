@@ -1,14 +1,12 @@
-const log = console.log;
-
 const profileTitle = document.querySelector('.profile__title'); 
 const profileSubtitle = document.querySelector ('.profile__subtitle'); 
 const editButton = document.querySelector('.profile__edit-btn');
 const addButton = document.querySelector('.profile__add-btn')
 
-const popupElement = document.querySelectorAll('.popup');
+const popupElements = document.querySelectorAll('.popup');
 const profilePopupElement = document.querySelector('.profile-popup');
 const placePopupElement = document.querySelector('.place-popup');
-const closeButton = document.querySelectorAll('.popup__cls-btn');
+const closeButtons = document.querySelectorAll('.popup__cls-btn');
 const formProfile = profilePopupElement.querySelector('.popup__form');
 const formAddPlace = placePopupElement.querySelector('.popup__form');
 const popupInputNickname = document.querySelector('.popup__input_chg_nickname');
@@ -24,12 +22,12 @@ const imagePopupCaption = imagePopup.querySelector('.image-popup__caption');
 const listElement = document.querySelector('.elements');
 const cardElement = document.querySelector('#cardElement').content;
 
-  function openPopup(y) {
-    y.classList.add('popup_opened');
+  function openPopup(popup) {
+    popup.classList.add('popup_opened');
 }
 
-  function closePopup(y) {
-    y.classList.remove('popup_opened');
+  function closePopup(popup) {
+    popup.classList.remove('popup_opened');
 }
 /*заполнение формы редактирования профиля*/
 editButton.addEventListener('click', () => {
@@ -46,12 +44,12 @@ formProfile.addEventListener('submit', (evt) => {
 });
 
 /*закрыть любой попап*/ 
-closeButton.forEach((x) => {
+closeButtons.forEach((element) => {
   /*находим родитель с классом .попап */
-    const z = x.closest('.popup');
+    const closestPopup = element.closest('.popup');
     /* вешаем слушатель */
-    x.addEventListener('click', () => {
-        closePopup(z);
+    element.addEventListener('click', () => {
+        closePopup(closestPopup);
     });
 });
 
@@ -89,39 +87,36 @@ addButton.addEventListener('click', () => {
 })
 
 /*создание карточек из массива*/
-function createPlace(x) {
+function createPlace(item) {
   const placeElement = cardElement.querySelector('.elements__list').cloneNode(true);
   const likeButton = placeElement.querySelector('.element__like');
   const trashButton = placeElement.querySelector('.element__trh-btn');
   const imageElement = placeElement.querySelector('.element__image');
 
-  imageElement.src = x.link;
-  imageElement.alt = x.name;
-  placeElement.querySelector('.element__title').textContent = x.name;
+  imageElement.src = item.link;
+  imageElement.alt = item.name;
+  placeElement.querySelector('.element__title').textContent = item.name;
 
   /*активный лайк*/
   likeButton.addEventListener('click', () => likeButton.classList.toggle('element__like_active'));
   /*удаление карточки при клике на мусорку*/
   trashButton.addEventListener('click', () => trashButton.closest('.elements__list').remove());
-  /*открытие картинки в попапе*/
-  imageElement.addEventListener('click', () => {
-    openPicturePopup(x);
-    openPopup(imagePopup);
-  });
+  /*открытие картинки в попапе при клике*/
+  imageElement.addEventListener('click', () => openPicturePopup(item)); 
   return placeElement;
 }
 
 /* добавление карточки*/
-initialCards.forEach((x) => {
-  listElement.append(createPlace(x));
+initialCards.forEach((item) => {
+  listElement.append(createPlace(item));
 })
 
 formAddPlace.addEventListener('submit', (evt) => {
-  const xName = {
+  const itemName = {
     name:popupInputCaption.value,
     link:popupInputUrl.value
   };
-  listElement.prepend(createPlace(xName));
+  listElement.prepend(createPlace(itemName));
   evt.preventDefault();
   closePopup(placePopupElement);
   /*обнуляет поля ввода*/
@@ -129,9 +124,9 @@ formAddPlace.addEventListener('submit', (evt) => {
 })
 
  /*открытие картинки в попапе*/
- function openPicturePopup(x) {
-    imagePopupPicture.src = x.link;
-    imagePopupPicture.alt = x.name;
-    imagePopupCaption.textContent = x.name;
+ function openPicturePopup(item) {
+    imagePopupPicture.src = item.link;
+    imagePopupPicture.alt = item.name;
+    imagePopupCaption.textContent = item.name;
     openPopup(imagePopup);
  }
