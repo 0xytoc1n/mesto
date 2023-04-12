@@ -51,14 +51,22 @@
                 placeholder="Никнейм"
                 value=""
                 name="name"
+                id="name"
+                minlength="2"
+                maxlength="40"
                 required>
+              <span class="popup__err popup__err_type_name"></span>
               <input
                 type="text"
                 class="popup__input popup__input_chg_activity"
                 placeholder="Деятельность"
                 value=""
                 name="activity"
+                id="activity"
+                minlength="2"
+                maxlength="200"
                 required>
+              <span class="popup__err popup__err_type_activity"></span>
             </fieldset>
             <button class="popup__sbt-btn" type="submit" aria-label="Сохранить">
               Сохранить
@@ -78,18 +86,24 @@
             <fieldset class="popup__fieldset">
               <input
                 type="text"
+                name="caption"
+                id="caption"
                 class="popup__input popup__input_chg_caption"
                 placeholder="Название"
                 value=""
-                name="caption"
+                minlength="2"
+                maxlength="30"
                 required>
+              <span class="popup__err popup__err_type_caption"></span>
               <input
-                type="text"
+                type="url"
+                name="url"
+                id="url"
                 class="popup__input popup__input_chg_url"
                 placeholder="Ссылка на картинку"
                 value=""
-                name="url"
                 required>
+              <span class="popup__err popup__err_type_url"></span>
             </fieldset>
             <button class="popup__sbt-btn" type="submit" aria-label="Создать">
               Создать
@@ -134,5 +148,6 @@
       </div>
     </template>
     <script src="./scripts/data.js"></script>
+    <script src="./scripts/validate.js"></script>
   </body>
 </html>
