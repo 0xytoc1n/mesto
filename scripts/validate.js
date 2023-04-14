@@ -10,7 +10,6 @@
     inputErrorClass: 'popup__input_invalid',
     errorClass: 'popup__err_visible'
   };
-  console.log('.popup__err_visible');
 
   function enableValidation(item) {
     const forms = Array.from(item.formSelector);
@@ -48,8 +47,9 @@
   function showInputError(inputElement, errorElement, inputErrorClass, errorClass) {
     inputElement.classList.add(inputErrorClass);
     errorElement.classList.add(errorClass);
-    errorElement.textContent = inputElement.errorMessage;
-  }
+    errorElement.textContent = inputElement.validationMessage;
+  };
+  
 // функция скрывающая ошибку
   function hideInputError(inputElement, errorElement, inputErrorClass, errorClass) {
     inputElement.classList.remove(inputErrorClass);

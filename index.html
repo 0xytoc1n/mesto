@@ -43,8 +43,8 @@
             type="button"
             aria-label="Закрыть окно"></button>
           <h2 class="popup__title">Редактировать профиль</h2>
-          <form class="popup__form" method="post" name="redForm">
-            <fieldset class="popup__fieldset">
+          <form class="popup__form" method="post" name="redForm" novalidate>
+           
               <input
                 type="text"
                 class="popup__input popup__input_chg_nickname"
@@ -67,7 +67,7 @@
                 maxlength="200"
                 required>
               <span class="popup__err popup__err_type_activity"></span>
-            </fieldset>
+            
             <button class="popup__sbt-btn" type="submit" aria-label="Сохранить">
               Сохранить
             </button>
@@ -82,8 +82,8 @@
             type="button"
             aria-label="Закрыть окно"></button>
           <h2 class="popup__title">Новое место</h2>
-          <form class="popup__form" method="post" name="addForm">
-            <fieldset class="popup__fieldset">
+          <form class="popup__form" method="post" name="addForm" novalidate>
+           
               <input
                 type="text"
                 name="caption"
@@ -104,7 +104,7 @@
                 value=""
                 required>
               <span class="popup__err popup__err_type_url"></span>
-            </fieldset>
+           
             <button class="popup__sbt-btn" type="submit" aria-label="Создать">
               Создать
             </button>

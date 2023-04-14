@@ -1,9 +1,9 @@
 .popup__err {
-   visibility: hidden;
-    color: #FF0000;
     display: block;
+    min-height: 28px;
+    width: 100%;
+    padding-top: 3px;
     font-weight: 400;
     font-size: 12px;
-    line-height: 12px;
-    min-height: 28px;
+    line-height: 15px;
 }
