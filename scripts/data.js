@@ -23,10 +23,10 @@ const listElement = document.querySelector('.elements');
 const cardElement = document.querySelector('#cardElement').content;
 
 // переменные для сброса ошибок
-const buttonSubmitFormDataElement = document.querySelector('.popup__sbt-btn');
-const inputListFormDataElement = document.querySelector('.popup__input');
-const buttonSubmitFormCardElement = document.querySelector('.popup__sbt-btn');
-const inputListFormCardElement = document.querySelector('.popup__input');
+const buttonSubmitFormDataElement = formProfile.querySelector('.popup__sbt-btn');
+const inputListFormDataElements = formProfile.querySelectorAll('.popup__input');
+const buttonSubmitFormCardElement = formAddPlace.querySelector('.popup__sbt-btn');
+const inputListFormCardElements = formAddPlace.querySelectorAll('.popup__input');
 
 // функция открытия попапа
 function openPopup(popup) {
@@ -50,18 +50,15 @@ function closePopupEscape(evt) {
 
 // открытие попап редактирования профиля
 editButton.addEventListener('click', () => {
-    resetErrorForm(formProfile);
+    resetErrorForm(formProfile, internalValidation);
     popupInputNickname.value = profileTitle.textContent;
     popupInputActivity.value = profileSubtitle.textContent;
-    toggleButtonState(inputListFormDataElement, buttonSubmitFormDataElement, internalValidation.disabledButtonClass)
     openPopup(profilePopupElement);
 });
 
 // открытие попап редактирования карточек
 addButton.addEventListener('click', () => {
-    formAddPlace.reset();
-    resetErrorForm(formAddPlace);
-    toggleButtonState(inputListFormCardElement, buttonSubmitFormCardElement, internalValidation.disabledButtonClass)
+    resetErrorForm(formAddPlace, internalValidation);
     openPopup(placePopupElement);
 });
 
@@ -165,3 +162,4 @@ initialCards.forEach((item) => {
     imagePopupCaption.textContent = item.name;
     openPopup(imagePopup);
  }
+

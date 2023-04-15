@@ -58,13 +58,15 @@
   }
 
 // функция сброса ошибок валидации при открытии
-  function resetErrorForm(form) {
+  function resetErrorForm(form, internalValidation) {
+   const button = form.querySelector(internalValidation.submitButtonSelector)
     form.querySelectorAll(internalValidation.inputSelector).forEach((inputElement) => {
-        const errorTemplate = document.querySelector(`${internalValidation.errorTemplateSelector}${inputElement.id}`);
+        const errorTemplate = form.querySelector(`${internalValidation.errorTemplateSelector}${inputElement.id}`);
         if (!inputElement.validity.valid) {
             hideInputError(inputElement, errorTemplate, internalValidation.inputErrorClass, internalValidation.errorClass);
           } 
     });
+    disabledButton(button, internalValidation.disabledButtonClass)
   }
 
 // кликабельная кнопка
@@ -81,7 +83,7 @@
 
 // валидность инпутов и стилизация кнопок 
   function toggleButtonState(inputLists, button, disabledButtonClass) {
-    if (hasInvalidInput(inputLists)) {
+    if (hasInvalidInput(inputLists)) { 
         disabledButton(button, disabledButtonClass);
       } else {
         enableButton(button, disabledButtonClass);
@@ -93,5 +95,5 @@
     return Array.from(inputLists).some((inputElement) => !inputElement.validity.valid)
  }
 
- enableValidation(internalValidation);
+  enableValidation(internalValidation);
  
