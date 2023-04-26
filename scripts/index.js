@@ -1,5 +1,5 @@
 import initialCards from "./const.js";
-import Card from "./Card.js";
+import Card from "./Сard.js";
 import FormValidator from "./FormValidator.js";
 
 const profileTitle = document.querySelector(".profile__title");
