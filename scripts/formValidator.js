@@ -71,7 +71,7 @@ export default class FormValidator {
     this._addEventListener();
   }
 
-  resetErrorForm() {
+  resetValidation() {
     this._inputLists.forEach((inputElement) => {
       const errorTemplate = this._form.querySelector(
         `${this._errorTemplateSelector}${inputElement.id}`

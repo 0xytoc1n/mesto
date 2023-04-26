@@ -1,6 +1,6 @@
 import initialCards from "./const.js";
-import Card from "./card.js";
-import FormValidator from "./formValidator.js";
+import Card from "./Card.js";
+import FormValidator from "./FormValidator.js";
 
 const profileTitle = document.querySelector(".profile__title");
 const profileSubtitle = document.querySelector(".profile__subtitle");
@@ -76,7 +76,7 @@ function closePopupOverlay(evt) {
 
 // открытие попап редактирования профиля
 editButton.addEventListener("click", () => {
-  formProfileValidation.resetErrorForm();
+  formProfileValidation.resetValidation();
   popupInputNickname.value = profileTitle.textContent;
   popupInputActivity.value = profileSubtitle.textContent;
   openPopup(profilePopupElement);
@@ -85,7 +85,7 @@ editButton.addEventListener("click", () => {
 // открытие попап редактирования карточек
 addButton.addEventListener("click", () => {
   formAddPlace.reset();
-  formAddPlaceValidation.resetErrorForm();
+  formAddPlaceValidation.resetValidation();
   openPopup(placePopupElement);
 });
 
