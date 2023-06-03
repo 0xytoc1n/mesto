@@ -3,20 +3,19 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./pages/index.css">
     <title>Место</title>
   </head>
   <body class="page">
     <div class="page__contanier">
       <header class="header">
-        <img src="./images/logo.svg" alt="Лого" class="header__logo">
+        <img src="<%=require(./images/logo.svg)%>" alt="Лого" class="header__logo">
       </header>
 
       <main class="content">
         <section class="profile" aria-label="Данные владельца страницы">
           <div class="profile__container">
             <img
-              src="./images/жакИв.jpg"
+              src="<%=require(./images/жакИв.jpg)%>"
               alt="Портрет Жак-Ив Кусто."
               class="profile__avatar">
             <div class="profile__info">
@@ -50,7 +49,7 @@
                 class="popup__input popup__input_chg_nickname"
                 placeholder="Никнейм"
                 value=""
-                name="name"
+                name="nickname"
                 id="name"
                 minlength="2"
                 maxlength="40"
@@ -97,13 +96,13 @@
               <span class="popup__err popup__err_type_caption"></span>
               <input
                 type="url"
-                name="url"
-                id="url"
+                name="link"
+                id="link"
                 class="popup__input popup__input_chg_url"
                 placeholder="Ссылка на картинку"
                 value=""
                 required>
-              <span class="popup__err popup__err_type_url"></span>
+              <span class="popup__err popup__err_type_link"></span>
            
             <button class="popup__sbt-btn" type="submit" aria-label="Создать">
               Создать
@@ -147,6 +146,5 @@
         </article>
       </div>
     </template>
-    <script src="./scripts/index.js" type="module"></script>
   </body>
 </html>
