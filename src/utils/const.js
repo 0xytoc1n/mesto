@@ -26,8 +26,8 @@ const initialCards = [
     }
   ];
 
-  const editButton = document.querySelector(".profile__edit-btn");
-  const addButton = document.querySelector(".profile__add-btn");
+  const profileEditButton = document.querySelector(".profile__edit-btn");
+  const profileAddButton = document.querySelector(".profile__add-btn");
 
   const cardSelectorTemplate = "#cardElement";
 
@@ -57,8 +57,8 @@ const initialCards = [
   
   export {
     initialCards,
-    editButton,
-    addButton,
+    profileEditButton,
+    profileAddButton,
     cardSelectorTemplate,
     formProfile,
     formAddPlace,
