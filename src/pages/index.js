@@ -39,11 +39,11 @@ const section = new Section({
 
 section.renderItems();
 
-const popupProfile = new PopupWithForm(popupProfileSelector, inputValues => {
-  userInfo.setUserInfo(inputValues());
+const popupProfile = new PopupWithForm(popupProfileSelector, (inputValues) => {
+  userInfo.setUserInfo(inputValues);
 })
 
-const popupAddPlace = new PopupWithForm(popupAddPlaceSelector, inputValues => {
+const popupAddPlace = new PopupWithForm(popupAddPlaceSelector, (inputValues) => {
   section.addItem(createNewCard(inputValues));
 })
 
