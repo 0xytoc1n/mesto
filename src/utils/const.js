@@ -1,49 +1,24 @@
 /* массив Шесть карточек «из коробки» */
-const initialCards = [
-    { 
-      caption: 'Архыз',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-    },
-    {
-      caption: 'Челябинская область',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-    },
-    {
-      caption: 'Иваново',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-    },
-    {
-      caption: 'Камчатка',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-    },
-    {
-      caption: 'Холмогорский район',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-    },
-    {
-      caption: 'Байкал',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-    }
-  ];
-
   const profileEditButton = document.querySelector(".profile__edit-btn");
   const profileAddButton = document.querySelector(".profile__add-btn");
+  const profileAvatarOverlay = document.querySelector('.profile__avatar-overlay');
 
   const cardSelectorTemplate = "#cardElement";
 
-  const profilePopupElement = document.querySelector(".profile-popup");
-  const placePopupElement = document.querySelector(".place-popup");
-
-  const formProfile = profilePopupElement.querySelector(".popup__form");
-  const formAddPlace = placePopupElement.querySelector(".popup__form");
   const popupProfileSelector = '.profile-popup';
   const popupAddPlaceSelector = '.place-popup';
   const popupImageSelector = '.image-popup';
   const listElementSelector = '.elements';
 
+  const popupAvatarSelector = '.edit-avatar';
+  const popupDeleteSelector = '.card-delete';
+
+  const forms = {};
+  
   const configInfo = {
     profileTitleSelector: '.profile__title',
-    profileSubtitleSelector: '.profile__subtitle'
+    profileSubtitleSelector: '.profile__subtitle',
+    profileAvatar: '.profile__avatar'
 }
 
   const internalValidation = {
@@ -56,16 +31,17 @@ const initialCards = [
   };
   
   export {
-    initialCards,
     profileEditButton,
     profileAddButton,
+    profileAvatarOverlay,
     cardSelectorTemplate,
-    formProfile,
-    formAddPlace,
     popupProfileSelector,
     popupAddPlaceSelector,
     popupImageSelector,
     listElementSelector,
+    popupAvatarSelector,
+    popupDeleteSelector,
+    forms,
     configInfo,
     internalValidation,
   }

@@ -1,12 +1,12 @@
 import Popup from "./Popup.js";
 
-export default class PopupWithForm extends Popup {
+export default class PopupDeleteForm extends Popup {
     constructor(popupSelector, functionSubmitForm) {
         super(popupSelector);
         this._functionSubmitForm = functionSubmitForm;
-        this._inputList = this._form.querySelectorAll('.popup__input');
         this._submitButton = this._form.querySelector('.popup__sbt-btn');
         this._defaultTextButton = this._submitButton.textContent;
+
     }
 
     setEventListeners() {
@@ -14,31 +14,20 @@ export default class PopupWithForm extends Popup {
         this._form.addEventListener('submit', (evt) => {
             evt.preventDefault();
             this._submitButton.textContent = `${this._submitButton.textContent}...`
-            this._functionSubmitForm(this._getInputValues());
+            this._functionSubmitForm({
+                item: this._item,
+                cardId: this._cardId,
+            });
         });
     }
 
-    _getInputValues() {
-        this._values = {};
-        this._inputList.forEach(element => {
-            this._values[element.name] = element.value
-        });
-
-        return this._values
+    open = ({item, cardId}) => {
+        super.open();
+        this._item = item;
+        this._cardId = cardId;
     }
 
-    setInputValues(object) {
-        this._inputList.forEach(element => {
-            element.value = object[element.name];
-        });
-    }
-
-    resetDefaultText() {
+    resetDefaultTextDelete() {
         this._submitButton.textContent = this._defaultTextButton
-    }
-  
-    close() {
-        super.close();
-        this._form.reset();
     }
 }

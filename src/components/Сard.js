@@ -1,23 +1,34 @@
 export default class Card {
-    constructor(item, cardSelectorTemplate, openPicturePopup) {
+    constructor(item, cardSelectorTemplate, openPicturePopup, openDeleteCard, shiftLike ) {
       this._item = item;
       this._link = item.link;
-      this._name = item.caption;
+      this._name = item.name;
+      this._mineId = item.mineId;
+      this._ownerId = item.owner._id;
+      this._likes = item.likes;
+      this._likesSum = item.likes.length;
+      this._cardId = item._id;
       this._cardSelectorTemplate = cardSelectorTemplate;
       this._openPicturePopup = openPicturePopup;
-    }
-  
-    _makeCards() {
-      return document.querySelector(this._cardSelectorTemplate).content.querySelector('.elements__list').cloneNode(true)
+      this._openDeleteCard = openDeleteCard;
+      this._shiftLike = shiftLike;
+      this._cloneElement = document.querySelector(this._cardSelectorTemplate).content.querySelector('.elements__list').cloneNode(true);
+      this._imageElement = this._cloneElement.querySelector('.element__image');
+      this._likeButton = this._cloneElement.querySelector('.element__like');
+      this._trashButton = this._cloneElement.querySelector('.element__trh-btn');
+      this._title = this._cloneElement.querySelector('.element__title');
+      this._counter= this._cloneElement.querySelector('.element__counter');
     }
   
     _toggleLike = () => {
-      this._likeButton.classList.toggle('element__like_active');
+      this._shiftLike(this._likeButton, this._cardId)
   }
   
     _deleteTrash = () => {
-      this._cloneElement.remove();
-      this._cloneElement = null;
+      this._openDeleteCard({
+        item:this, 
+        cardId:this._cardId
+      });
     }
   
     _openImagePopup = () => {
@@ -29,17 +40,38 @@ export default class Card {
       this._trashButton.addEventListener('click', this._deleteTrash);
       this._imageElement.addEventListener('click', this._openImagePopup);
   }
+
+    _checkNumberLikes() {
+      this._likes.forEach(element => {
+        if (element._id === this._mineId) {
+          this._likeButton.classList.add('element__like_active')
+          return
+        }
+      })
+      this._counter.textContent = this._likesSum
+    }
+
+    _makeTrashInvisible() {
+      this._mineId === this._ownerId ? this._trashButton.style.display = 'block' : this._trashButton.style.display = 'none';
+    }
   
+    removeCard() {
+      this._cloneElement.remove();
+      this._cloneElement = null;
+    }
+
     createCard() {
-      this._cloneElement = this._makeCards();
-      this._imageElement = this._cloneElement.querySelector('.element__image');
-      this._likeButton = this._cloneElement.querySelector('.element__like');
-      this._trashButton = this._cloneElement.querySelector('.element__trh-btn');
-      this._title = this._cloneElement.querySelector('.element__title');
       this._imageElement.src = this._link;
       this._imageElement.alt = this._name;
       this._title.textContent = this._name;
-      this._addEventListener()
-      return this._cloneElement
+      this._checkNumberLikes();
+      this._makeTrashInvisible();
+      this._addEventListener();
+      return this._cloneElement;
   }
+
+    hangleLike(likes) {
+      this._likeButton.classList.toggle('element__like_active');
+      this._counter.textContent = likes.length
+    }
   };

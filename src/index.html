@@ -14,14 +14,16 @@
       <main class="content">
         <section class="profile" aria-label="Данные владельца страницы">
           <div class="profile__container">
+            <button class="profile__avatar-overlay" type="button" aria-label="Изменить">
             <img
-              src="<%=require('./images/жакИв.jpg')%>"
+              src="#"
               alt="Портрет Жак-Ив Кусто"
               class="profile__avatar">
+            </button>
             <div class="profile__info">
-              <h1 class="profile__title">Жак-Ив Кусто</h1>
+              <h1 class="profile__title"></h1>
               <button class="profile__edit-btn" type="button"></button>
-              <p class="profile__subtitle">Исследователь океана</p>
+              <p class="profile__subtitle"></p>
             </div>
           </div>
           <button class="profile__add-btn" type="button"></button>
@@ -42,7 +44,7 @@
             type="button"
             aria-label="Закрыть окно"></button>
           <h2 class="popup__title">Редактировать профиль</h2>
-          <form class="popup__form" method="post" name="redForm" novalidate>
+          <form class="popup__form" method="post" name="personalForm" novalidate>
            
               <input
                 type="text"
@@ -81,7 +83,7 @@
             type="button"
             aria-label="Закрыть окно"></button>
           <h2 class="popup__title">Новое место</h2>
-          <form class="popup__form" method="post" name="addForm" novalidate>
+          <form class="popup__form" method="post" name="addPlace" novalidate>
            
               <input
                 type="text"
@@ -126,8 +128,47 @@
           </figure>
         </div>
       </div>
-    </div>
 
+      <div class="popup edit-avatar">
+        <div class="popup__contanier">
+          <button
+            class="popup__cls-btn"
+            type="button"
+            aria-label="Закрыть окно"></button>
+          <h2 class="popup__title">Обновить аватар</h2>
+          <form class="popup__form" method="post" name="editAvatar" novalidate>
+              <input
+                type="url"
+                name="avatar"
+                id="avatar"
+                class="popup__input popup__input_el_avatar"
+                placeholder="Ссылка на картинку"
+                value=""
+                required>
+              <span class="popup__err popup__err_type_avatar"></span>
+            <button class="popup__sbt-btn" type="submit" aria-label="Создать">
+              Сохранить
+            </button>
+          </form>
+        </div>
+      </div>
+  
+      <div class="popup card-delete">
+        <div class="popup__contanier">
+          <button
+            class="popup__cls-btn"
+            type="button"
+            aria-label="Закрыть окно"></button>
+          <h2 class="popup__title">Вы уверены?</h2>
+          <form class="popup__form popup__form_type_delete" method="post" name="deleteCard" novalidate>
+            <button class="popup__sbt-btn" type="submit" aria-label="Создать">
+              Да
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+    
     <template id="cardElement">
       <div class="elements__list">
         <article class="element">
@@ -142,7 +183,9 @@
               class="element__like"
               type="button"
               aria-label="Лайк"></button>
+            <span class="element__counter"></span>
           </div>
+          
         </article>
       </div>
     </template>
