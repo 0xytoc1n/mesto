@@ -31,7 +31,7 @@ const popupPicture = new PopupWithImage(popupImageSelector);
 
 /*создание экземпляра класса PopupDeleteForm*/
 const popupDeleteCard = new PopupDeleteForm(popupDeleteSelector, ({item, cardId}) => {
-  api.deletCard(cardId)
+  api.deleteCard(cardId)
   .then(() => {
     item.removeCard();
     popupDeleteCard.close()
@@ -50,8 +50,8 @@ const api = new Api({
 })
 
 function createNewCard(item) {
-    const card = new Card(item, cardSelectorTemplate, popupPicture.open, popupDeleteCard.open, (likeButton, cardId) => {
-      if (likeButton.classList.contains('element__like_active')) {
+    const card = new Card(item, cardSelectorTemplate, popupPicture.open, popupDeleteCard.open, (isLike, cardId) => {
+      if (isLike) {
         api.deleteLike(cardId)
           .then(res => {
             card.hangleLike(res.likes);
@@ -89,18 +89,29 @@ const popupProfile = new PopupWithForm(popupProfileSelector, (inputValues) => {
   .finally(() => popupProfile.resetDefaultText())
 })
 
-/*создание экземпляра класса PopupWithForm для формы добавления карточек*/
 const popupAddPlace = new PopupWithForm(popupAddPlaceSelector, (data) => {
-  Promise.all([api.getInfo(),api.addCard(data)])
-  /*деструкруризация */ /*полученную с сервера информауцию положить на страницу */
-  .then(([dataUser, dataCard]) => { 
-    dataCard.mineId = dataUser._id;
-    section.addItem(createNewCard(dataCard))
-    popupAddPlace.close()
-  })
-  .catch((error) => console.error(`Ошибка добавления данных на страницу ${error}`))
+  api.addCard(data)
+    .then(dataCard => { 
+        dataCard.mineId = userInfo.getId()
+        section.addItem(createNewCard(dataCard))
+        popupAddPlace.close()
+})
+.catch((error) => console.error(`Ошибка добавления данных на страницу ${error}`))
   .finally(() => popupAddPlace.resetDefaultText())
 })
+
+/*создание экземпляра класса PopupWithForm для формы добавления карточек*/
+// const popupAddPlace = new PopupWithForm(popupAddPlaceSelector, (data) => {
+//   Promise.all([api.getInfo(),api.addCard(data)])
+//   /*деструкруризация */ /*полученную с сервера информауцию положить на страницу */
+//   .then(([dataUser, dataCard]) => { 
+//     dataCard.mineId = dataUser._id;
+//     section.addItem(createNewCard(dataCard))
+//     popupAddPlace.close()
+//   })
+//   .catch((error) => console.error(`Ошибка добавления данных на страницу ${error}`))
+//   .finally(() => popupAddPlace.resetDefaultText())
+// })
 
 /*создание экземпляра класса PopupWithForm для формы добавления аватарки*/
 const popupEditAvatar = new PopupWithForm(popupAvatarSelector, (data) => {
@@ -161,6 +172,7 @@ Promise.all([api.getInfo(),api.getCards()])
       activity: dataUser.about,
       avatar: dataUser.avatar
     })
+    userInfo.setId(dataUser._id)
     section.renderItems(dataCard.reverse());
   })
   .catch((error) => console.error(`Ошибка создания начальных данных ${error}`))

@@ -12,6 +12,7 @@ export default class Card {
       this._openPicturePopup = openPicturePopup;
       this._openDeleteCard = openDeleteCard;
       this._shiftLike = shiftLike;
+      this._isLike = false;
       this._cloneElement = document.querySelector(this._cardSelectorTemplate).content.querySelector('.elements__list').cloneNode(true);
       this._imageElement = this._cloneElement.querySelector('.element__image');
       this._likeButton = this._cloneElement.querySelector('.element__like');
@@ -21,7 +22,7 @@ export default class Card {
     }
   
     _toggleLike = () => {
-      this._shiftLike(this._likeButton, this._cardId)
+      this._shiftLike(this._isLike, this._cardId)
   }
   
     _deleteTrash = () => {
@@ -44,11 +45,12 @@ export default class Card {
     _checkNumberLikes() {
       this._likes.forEach(element => {
         if (element._id === this._mineId) {
+          this._isLike = true;
           this._likeButton.classList.add('element__like_active')
           return
         }
       })
-      this._counter.textContent = this._likesSum
+      this._counter.textContent = this._likesSum;
     }
 
     _makeTrashInvisible() {
@@ -73,5 +75,6 @@ export default class Card {
     hangleLike(likes) {
       this._likeButton.classList.toggle('element__like_active');
       this._counter.textContent = likes.length
+      this._isLike = !this._isLike;
     }
   };
